@@ -29,8 +29,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("{username}")
     public ResponseEntity<List<City>> queriedCities(@PathVariable String username) {
-        
+        List<City> queriedCities = userService.findByUsername(username).getQueriedCities();
+        return ResponseEntity.ok(queriedCities);
     }
 }
